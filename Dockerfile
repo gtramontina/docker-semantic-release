@@ -4,9 +4,11 @@ RUN apk --update add git openssh && \
     rm -rf /var/lib/apt/lists/* && \
     rm /var/cache/apk/*
 
-ENV VERSION 12.1.0
-RUN yarn global add semantic-release@$VERSION
+COPY package.json .
+RUN yarn install && \
+    yarn autoclean --init && \
+    yarn autoclean --force && \
+    rm package.json yarn.lock .yarnclean
 
-ENTRYPOINT ["semantic-release"]
+ENTRYPOINT ["node_modules/.bin/semantic-release"]
 CMD ["--help"]
-
