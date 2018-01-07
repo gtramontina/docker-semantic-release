@@ -22,6 +22,37 @@ $ docker run --rm gtramontina/semantic-release:<version>
 $ docker run --rm gtramontina/semantic-release:<version> --
 ```
 
+**Note 2**: You'll need to mount your `git`-based project in the container, as well as the necessary environment variables. The example below mounts the current directory as `/app` in the container and sets it as the working directory (`-w`). It also sets the required `GH_TOKEN` and `NPM_TOKEN` environment variables (because we're using the default verification/publication settings).
+
+```sh
+$ docker run --rm \
+  -w /app \
+  -v $(pwd):/app \
+  -e GH_TOKEN=$GH_TOKEN \
+  -e NPM_TOKEN=$NPM_TOKEN \
+  gtramontina/semantic-release:<version>
+```
+
+**Note 3**: If you're running `semantic-release` in Travis, AppVeyor or any other CI environment, remember to forward the relevant environment variables to your container. The following example forwards Travis' variables:
+
+```sh
+$ docker run --rm \
+  -w /app \
+  -v $(pwd):/app \
+  -e GH_TOKEN=$GH_TOKEN \
+  -e NPM_TOKEN=$NPM_TOKEN \
+  -e TRAVIS_COMMIT=$TRAVIS_COMMIT \
+  -e TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER \
+  -e TRAVIS_BRANCH=$TRAVIS_BRANCH \
+  -e TRAVIS_JOB_NUMBER=$TRAVIS_JOB_NUMBER \
+  -e TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST \
+  -e TRAVIS_REPO_SLUG=$TRAVIS_REPO_SLUG \
+  -e TRAVIS_BUILD_DIR=$TRAVIS_BUILD_DIR \
+  gtramontina/semantic-release:<version>
+```
+
+At the time of this writing, `semantic-release` was making use of [`env-ci`](https://github.com/pvdlg/env-ci) to detect CI environments. Take a look at the [environment variables it uses for your CI](https://github.com/pvdlg/env-ci/tree/master/lib) so you can forward them to your container.
+
 ---
 
 #### _Developing:_
