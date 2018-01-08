@@ -6,7 +6,7 @@ RUN apk --update add git openssh && \
 
 COPY package.json .
 COPY yarn.lock .
-RUN yarn install && \
+RUN yarn --prod && \
     yarn autoclean --init && \
     yarn autoclean --force && \
     rm package.json yarn.lock .yarnclean
