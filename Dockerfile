@@ -1,4 +1,4 @@
-FROM node:9.6.1-alpine@sha256:a01861d1ccb11a32399aaa0635b86c8c13a12d8b16a97294b52a733dcb189991
+FROM node:9.6.1-alpine@sha256:0cde8b95153ed80438bea424b06cb8c0a59436f44672f095bd1cf275b044ec9a
 
 RUN apk --update add git openssh && \
     rm -rf /var/lib/apt/lists/* && \
