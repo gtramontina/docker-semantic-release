@@ -1664,9 +1664,9 @@ safe-regex@^1.1.0:
   dependencies:
     ret "~0.1.10"
 
-semantic-release@15.0.0:
-  version "15.0.0"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.0.0.tgz#d54b7584f4e11f75513349096fc08a96e83f8825"
+semantic-release@15.0.1:
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.0.1.tgz#c544af65e45c2bcf8024235ac359ce3083874a98"
   dependencies:
     "@semantic-release/commit-analyzer" "^5.0.0"
     "@semantic-release/error" "^2.2.0"
