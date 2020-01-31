@@ -13,7 +13,7 @@ to-clobber += $(image-name):$(tag)
 to-clean += build.log
 
 test.log: build.log
-	@docker run --rm $(image-name):$(tag) | tee $@
+	@[ `docker run --rm $(image-name):$(tag) --version` = "$(tag)" ] | tee $@
 to-clean += test.log
 
 # ---
