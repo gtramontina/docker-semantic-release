@@ -3,6 +3,6 @@
   "version": "0.0.0",
   "license": "MIT",
   "dependencies": {
-    "semantic-release": "17.4.3"
+    "semantic-release": "19.0.3"
   }
 }
